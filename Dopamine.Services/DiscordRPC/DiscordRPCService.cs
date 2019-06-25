@@ -37,7 +37,7 @@ namespace Dopamine.Services.DiscordRPC
             Presence.Timestamps.Start = null;
             Presence.Timestamps.End = null;
             PopulateWithTrack();
-            RpcClient.SetPresence(Presence);
+            PushState();
         }
 
         public void OnPlaybackStarted(object sender, PlaybackSuccessEventArgs e)
@@ -89,12 +89,12 @@ namespace Dopamine.Services.DiscordRPC
                 progressFraction = 1.0;
             double progress = length * progressFraction;
 
-            DateTime start = DateTime.Now - TimeSpan.FromSeconds(progress);
-            DateTime end = DateTime.Now + TimeSpan.FromSeconds(length - progress);
+            DateTime start = DateTime.UtcNow - TimeSpan.FromSeconds(progress);
+            DateTime end = DateTime.UtcNow + TimeSpan.FromSeconds(length - progress);
 
             Timestamps timestamps = new Timestamps
             {
-                Start = new DateTime(1970, 1, 1, 0, 0, 1, 0, System.DateTimeKind.Utc),
+                Start = start,
                 End = end
             };
             Presence.Timestamps = timestamps;
