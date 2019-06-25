@@ -94,7 +94,7 @@ namespace Dopamine.Services.DiscordRPC
 
             Timestamps timestamps = new Timestamps
             {
-                Start = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc),
+                Start = new DateTime(1970, 1, 1, 0, 0, 1, 0, System.DateTimeKind.Utc),
                 End = end
             };
             Presence.Timestamps = timestamps;

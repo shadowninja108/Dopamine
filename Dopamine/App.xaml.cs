@@ -14,6 +14,7 @@ using Dopamine.Services.Cache;
 using Dopamine.Services.Collection;
 using Dopamine.Services.Command;
 using Dopamine.Services.Dialog;
+using Dopamine.Services.DiscordRPC;
 using Dopamine.Services.Equalizer;
 using Dopamine.Services.ExternalControl;
 using Dopamine.Services.File;
@@ -250,6 +251,8 @@ namespace Dopamine
                 containerRegistry.RegisterSingleton<ILyricsService, LyricsService>();
                 containerRegistry.RegisterSingleton<IShellService, ShellService>();
                 containerRegistry.RegisterSingleton<ILifetimeService, LifetimeService>();
+                containerRegistry.RegisterSingleton<IDiscordRPCService, DiscordRPCService>();
+                Container.Resolve<IDiscordRPCService>();
 
                 INotificationService notificationService;
 
